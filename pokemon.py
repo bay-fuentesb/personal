@@ -1,23 +1,16 @@
 import json
 
 def crear():
-    try:
-        # Abrir y cargar el contenido del archivo JSON
-        with open("pokedex.json", mode="r") as file:
-            leerjson = json.load(file)
-    except FileNotFoundError:
-        # Si el archivo no existe, inicializar un diccionario con una lista vacía
-        leerjson = {"kanto": []}
-    
+    with open("pokedex.json", mode="r") as pokemon:
+        leerjson = json.load(pokemon)
+    region = input("ingrese el nombre de la region con el que desea interactuar")
     nombre = input("Ingrese el nombre del Pokémon que quieres ingresar: ")
-    
-    # Verificar si el Pokémon ya existe
-    for recorrido in leerjson["kanto"]:
-        if recorrido["nombre"] == nombre:
-            print("Ese Pokémon ya existe")
-            return
 
-    # Solicitar información del nuevo Pokémon
+    for recorrido in leerjson:
+        if recorrido["kanto"] == region:
+            if recorrido ["nombre"] == nombre:
+                print("ese pokemon ya existe")
+
     id = int(input("Ingrese su número en la Pokédex: "))
     tipo = input("Ingrese el tipo del Pokémon: ")
     new_pokemon = {
@@ -25,13 +18,10 @@ def crear():
         "nombre": nombre,
         "tipo": tipo
     }
-    
-    # Agregar el nuevo Pokémon a la lista
-    leerjson["kanto"].append(new_pokemon)
-    
-    # Guardar la lista actualizada de vuelta en el archivo JSON
-    with open("pokedex.json", mode="w") as file:
-        json.dump(leerjson, file, indent=4)
+
+    leerjson["nombre"].append(new_pokemon)
+    with open("pokedex.json", mode="w") as pokemon:
+        json.dump(leerjson, pokemon, indent=4)
     
     print("Pokémon ingresado correctamente")
 
