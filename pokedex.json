@@ -1,0 +1,14 @@
+{
+    "Kanto": [
+        {
+            "id": 1,
+            "nombre": "bulbasaur",
+            "tipo": "planta, veneno"
+        },
+        {
+            "id": 2,
+            "nombre": "ivysaur",
+            "tipo":"planta, veneno"
+        }
+    ]
+}
